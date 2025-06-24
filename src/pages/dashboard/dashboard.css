@@ -1,0 +1,201 @@
+/* 🎉 Background party animation */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: white;
+  background-size: 400% 400%;
+  animation: bgParty 15s ease infinite;
+  color: black;
+}
+
+/* @keyframes bgParty {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} */
+
+/* 📱 Responsive wrapper */
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .dashboard-wrapper {
+    flex-direction: row;
+  }
+}
+
+/* 🍔 Hamburger */
+.hamburger {
+  display: block;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* 📦 Main dashboard content */
+.dashboard-container {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    margin-left: 260px;
+  }
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ✍️ Form Section */
+.form-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+.form-section h2 {
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form input {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.form input::placeholder {
+  color: #ccc;
+}
+
+.form button {
+  background: linear-gradient(to right, #f472b6, #fb7185, #f97316);
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  opacity: 0.9;
+}
+
+/* 🔐 Password Section */
+.password-section {
+  margin-top: 2rem;
+}
+
+.password-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.toggle-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.entries {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .entries {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .entries {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 🎨 Color Themes for entries */
+.entry {
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.entry h3 {
+  margin-bottom: 0.25rem;
+}
+
+.entry p {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.entry .delete-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Colorful background variants */
+.theme-0 {
+  background: linear-gradient(to right, #ec4899, #f43f5e, #f97316);
+}
+.theme-1 {
+  background: linear-gradient(to right, #38bdf8, #6366f1, #9333ea);
+}
+.theme-2 {
+  background: linear-gradient(to right, #10b981, #84cc16, #22c55e);
+}
+.theme-3 {
+  background: linear-gradient(to right, #a855f7, #ec4899, #f59e0b);
+}
+
+.no-entries {
+  font-style: italic;
+  color: #ccc;
+}

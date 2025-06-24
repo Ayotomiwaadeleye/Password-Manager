@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to top right, #4b0082, #191970, #000);
+  background-size: 400% 400%;
+  animation: bgGradient 12s ease infinite;
+  color: white;
+}
+
+.edit-profile-btn {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #facc15;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #facc15;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.user-info p {
+  color: #ccc;
+}
+
+
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-container {
+  padding: 3rem 1rem;
+  min-height: 100vh;
+}
+
+.profile-wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  background: linear-gradient(to right, yellow, pink, purple);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.logout-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #ffb6c1;
+  margin-bottom: 1rem;
+}
+
+.user-details p {
+  margin-bottom: 0.5rem;
+}
+
+.loading-text {
+  color: #ccc;
+}

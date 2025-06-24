@@ -1,0 +1,165 @@
+/* --------------------- Global Background & Animation --------------------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #1e1b4b, #312e81, #4c1d95, #831843);
+  background-size: 400% 400%;
+  animation: vaultBG 15s ease infinite;
+  color: white;
+}
+
+@keyframes vaultBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --------------------- Layout & Sidebar Responsive --------------------- */
+.vault-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.vault-hamburger {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 1001;
+  display: block;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .vault-hamburger {
+    display: none;
+  }
+}
+
+.vault-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 8000;
+}
+
+
+.vault-container {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .vault-container {
+    margin-left: 260px;
+  }
+}
+
+/* --------------------- Vault Content --------------------- */
+.vault-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.vault-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.vault-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(to right, #facc15, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vault-title .icon {
+  color: #facc15;
+}
+
+/* --------------------- Vault Card --------------------- */
+.vault-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.vault-subtitle {
+  font-size: 1.8rem;
+  color: #f472b6;
+  margin-bottom: 1rem;
+}
+
+.vault-description {
+  font-size: 1rem;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+}
+
+/* --------------------- Vault Grid --------------------- */
+.vault-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .vault-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .vault-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.vault-item {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.vault-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.vault-item p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+/* --------------------- Color Themes --------------------- */
+.vault-item.purple {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+}
+
+.vault-item.blue {
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+}
+
+.vault-item.green {
+  background: linear-gradient(to right, #10b981, #22c55e);
+}
