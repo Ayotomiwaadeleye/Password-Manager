@@ -8,12 +8,6 @@ body {
   color: white;
 }
 
-@keyframes vaultBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* --------------------- Layout & Sidebar Responsive --------------------- */
 .vault-layout {
   display: flex;
@@ -32,6 +26,16 @@ body {
   z-index: 1001;
   display: block;
   cursor: pointer;
+}
+
+.vault-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  border: 1px solid var(--border);
+  transition: background 0.3s, color 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -83,9 +87,6 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(to right, #facc15, #ec4899, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .vault-title .icon {
@@ -149,17 +150,4 @@ body {
 .vault-item p {
   margin: 0.25rem 0;
   font-size: 0.9rem;
-}
-
-/* --------------------- Color Themes --------------------- */
-.vault-item.purple {
-  background: linear-gradient(to right, #8b5cf6, #ec4899);
-}
-
-.vault-item.blue {
-  background: linear-gradient(to right, #3b82f6, #6366f1);
-}
-
-.vault-item.green {
-  background: linear-gradient(to right, #10b981, #22c55e);
 }

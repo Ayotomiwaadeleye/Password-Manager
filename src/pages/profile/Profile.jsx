@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useUser, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { FaBars } from 'react-icons/fa';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './profile.css';
 import { UserProfile } from '@clerk/clerk-react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const Profile = () => {
+  const { darkMode } = useContext(ThemeContext);
   const { user } = useUser();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -28,8 +30,10 @@ const Profile = () => {
       }
     : simulatedUser;
 
+  
+
   return (
-    <div className="dashboard-wrapper">
+    <div className="dashboard-wrapper {`profile-wrapper ${darkMode}`}">
       {/* Mobile hamburger */}
       <button className="hamburger" onClick={() => setSidebarOpen(true)}>
         <FaBars />
@@ -38,7 +42,7 @@ const Profile = () => {
       {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="profile-container fade-in">
+      <div className="profile-container fade-in {`profile-wrapper ${darkMode}`}">
         <div className="profile-wrapper">
           <div className="profile-header">
             <h1 className="profile-title">👤 My Profile</h1>

@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { FaBars } from 'react-icons/fa';
 import Sidebar from '../../components/sidebar/Sidebar';
+import { useAuth } from '@clerk/clerk-react';
 import './dashboard.css';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -12,8 +15,9 @@ const Dashboard = () => {
   const [newEntry, setNewEntry] = useState({ name: '', username: '', password: '' });
   const [showPasswords, setShowPasswords] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
   const formRef = useRef(null);
+
+  const { getToken } = useAuth(); // 🔐 Clerk token access
 
   useEffect(() => {
     localStorage.setItem('passwords', JSON.stringify(entries));
@@ -23,10 +27,29 @@ const Dashboard = () => {
     setNewEntry({ ...newEntry, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedEntries = [...entries, newEntry];
     setEntries(updatedEntries);
+
+    // 🔐 Send to backend with Clerk auth
+    try {
+      const token = await getToken();
+      const res = await fetch('http://localhost:5000/api/passwords', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(newEntry),
+      });
+
+      const data = await res.json();
+      console.log('Server response:', data);
+    } catch (err) {
+      console.error('Failed to save to backend:', err);
+    }
+
     setNewEntry({ name: '', username: '', password: '' });
     alert('🎉 Password Saved!');
   };
@@ -49,21 +72,19 @@ const Dashboard = () => {
     entry.name.toLowerCase().includes(searchTerm)
   );
 
+  const { theme, toggleTheme} = useContext(ThemeContext);
+
   return (
     <div className="dashboard-wrapper">
-      {/* Hamburger for mobile */}
       <button className="hamburger" onClick={() => setSidebarOpen(true)}>
         <FaBars />
       </button>
 
-      {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* Main content */}
       <div className="dashboard-container">
         <h1 className="dashboard-title">🔐 TPassword</h1>
 
-        {/* Search + Add Button */}
         <div className="top-bar">
           <input
             type="text"
@@ -76,10 +97,13 @@ const Dashboard = () => {
             ➕ Add New
           </button>
         </div>
+        <button onClick={toggleTheme} className="theme-toggle-icon" title="Toggle Theme">
+          {theme === 'dark' ? <FaSun /> : <FaMoon />}
+        </button>
 
         <div className="password-section">
           <h2>🔒 Stored Passwords</h2>
-          <button onClick={() => setShowPasswords(!showPasswords)} className="toggle-btn">
+          <button onClick={() => setShowPasswords(!showPasswords)} className="toggle-btn all_buttons" >
             {showPasswords ? '🙈 Hide Passwords' : '👁️ Show Passwords'}
           </button>
 
@@ -103,13 +127,13 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Add New Form */}
         <div className="form-section" ref={formRef}>
           <h2>Add New Entry</h2>
           <form onSubmit={handleSubmit} className="form">
             <input
               type="text"
               name="name"
+              className='form_input'
               placeholder="Website Name"
               value={newEntry.name}
               onChange={handleChange}
@@ -118,6 +142,7 @@ const Dashboard = () => {
             <input
               type="text"
               name="username"
+              className='form_input'
               placeholder="Username or Email"
               value={newEntry.username}
               onChange={handleChange}
@@ -126,16 +151,15 @@ const Dashboard = () => {
             <input
               type="password"
               name="password"
+              className='form_input'
               placeholder="Password"
               value={newEntry.password}
               onChange={handleChange}
               required
             />
-            <button type="submit">💾 Save Password</button>
+            <button type="submit" className='all_buttons'>💾 Save Password</button>
           </form>
         </div>
-
-        {/* Vault Entries */}
       </div>
     </div>
   );

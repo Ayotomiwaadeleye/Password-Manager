@@ -43,6 +43,21 @@ body {
   color: #ccc;
 }
 
+.profile-wrapper {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  border: 1px solid var(--border);
+  transition: background 0.3s, color 0.3s;
+}
+
+.profile-wrapper h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 
 @keyframes bgGradient {
   0% { background-position: 0% 50%; }

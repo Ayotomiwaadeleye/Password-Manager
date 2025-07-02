@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { UserButton, useUser, useClerk, UserProfile } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -6,8 +6,10 @@ import { FaBars, FaUserEdit } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './settings.css';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const Settings = () => {
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
   const { user } = useUser();
   const { signOut } = useClerk();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -51,7 +53,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="dashboard-wrapper">
+    <div className="dashboard-wrapper {`settings-wrapper ${darkMode}`}">
       {/* Hamburger for mobile */}
       <button className="hamburger" onClick={() => setSidebarOpen(true)}>
         <FaBars />
@@ -70,7 +72,7 @@ const Settings = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="settings-wrapper">
+        <div className="settings-wrapper {`settings-wrapper ${darkMode}`}">
           <div className="settings-header">
             <h1 className="settings-title">⚙️ Settings</h1>
             <UserButton afterSignOutUrl="/sign-in" />

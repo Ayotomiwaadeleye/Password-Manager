@@ -1,12 +1,14 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { FaLock, FaBars } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './vault.css';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const defaultCategories = ['All', 'Work', 'School', 'Personal'];
 
 const Vault = () => {
+  const { darkmode } = useContext(ThemeContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [entries, setEntries] = useState(() => {
     const stored = localStorage.getItem('vaultItems');
@@ -45,7 +47,7 @@ const Vault = () => {
   };
 
   return (
-    <div className="vault-layout">
+    <div className="vault-layout {`vault-container ${darkMode}`}" >
       {/* Hamburger for mobile */}
       <button className="vault-hamburger" onClick={() => setSidebarOpen(true)}>
         <FaBars />
