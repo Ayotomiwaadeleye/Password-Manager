@@ -3,7 +3,7 @@ import { UserButton, useUser, useClerk, UserProfile } from '@clerk/clerk-react';
 import Sidebar from '../../components/sidebar/Sidebar';
 import { FaBars, FaUserEdit } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './settings.css';
 import { ThemeContext } from '../../context/ThemeContext';
 
