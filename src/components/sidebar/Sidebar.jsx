@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaLock, FaUser, FaCog, FaEdit, FaTimes } from 'react-icons/fa';
+import { FaHome, FaLock, FaUser, FaCog, FaEdit, FaTimes, FaKey } from 'react-icons/fa';
 import './sidebar.css';
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -8,14 +8,14 @@ const Sidebar = ({ isOpen, onClose }) => {
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       {/* Mobile header */}
       <div className="sidebar-header mobile-only">
-        <h2>PassManager</h2>
+        <h2>TAS-PASS</h2>
         <button onClick={onClose} className="close-btn">
           <FaTimes />
         </button>
       </div>
 
       {/* Desktop title */}
-      <h2 className="app-title desktop-only">🔐 PassManager</h2>
+      <h2 className="app-title desktop-only">🔐 TAS-PASS</h2>
 
       {/* Navigation */}
       <nav className="sidebar-nav">
@@ -54,6 +54,13 @@ const Sidebar = ({ isOpen, onClose }) => {
           className={({ isActive }) => (isActive ? 'sidebar-link active' : 'sidebar-link')}
         >
           <FaEdit /> <span>Edit Profile</span>
+        </NavLink>
+        <NavLink
+          to="/password-generator"
+          onClick={onClose}
+          className={({ isActive }) => (isActive ? 'sidebar-link active' : 'sidebar-link')}
+        >
+          <FaKey /> <span>Password Generator</span>
         </NavLink>
       </nav>
     </div>

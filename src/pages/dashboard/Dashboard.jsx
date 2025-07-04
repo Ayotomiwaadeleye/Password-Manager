@@ -83,7 +83,12 @@ const Dashboard = () => {
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="dashboard-container">
-        <h1 className="dashboard-title">🔐 TPassword</h1>
+        <div className="header">
+          <h1 className="dashboard-title">🔐 TAS-PASS</h1>
+          <button onClick={toggleTheme} className="theme-toggle-icon" title="Toggle Theme">
+            {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          </button>
+        </div>
 
         <div className="top-bar">
           <input
@@ -91,15 +96,12 @@ const Dashboard = () => {
             placeholder="🔍 Search by site name..."
             value={searchTerm}
             onChange={handleSearch}
-            className="search-bar"
+            className="search-bar form"
           />
           <button onClick={scrollToForm} className="add-btn">
             ➕ Add New
           </button>
         </div>
-        <button onClick={toggleTheme} className="theme-toggle-icon" title="Toggle Theme">
-          {theme === 'dark' ? <FaSun /> : <FaMoon />}
-        </button>
 
         <div className="password-section">
           <h2>🔒 Stored Passwords</h2>

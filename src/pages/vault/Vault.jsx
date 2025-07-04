@@ -1,14 +1,15 @@
 import { React, useState, useEffect, useContext } from 'react';
 import { FaLock, FaBars } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './vault.css';
 import { ThemeContext } from '../../context/ThemeContext';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const defaultCategories = ['All', 'Work', 'School', 'Personal'];
 
 const Vault = () => {
-  const { darkmode } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [entries, setEntries] = useState(() => {
     const stored = localStorage.getItem('vaultItems');
@@ -58,12 +59,12 @@ const Vault = () => {
       {sidebarOpen && <div className="vault-overlay" onClick={() => setSidebarOpen(false)}></div>}
 
       {/* Main Content */}
-      <motion.div
+      {/* <motion.div
         className="vault-container"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-      >
+      > */}
         <div className="vault-wrapper">
           <div className="vault-header">
             <h1 className="vault-title">
@@ -72,11 +73,14 @@ const Vault = () => {
             <div className="vault-controls">
               <select onChange={(e) => setFilter(e.target.value)} value={filter}>
                 {categories.map((cat, idx) => (
-                  <option key={idx} value={cat}>{cat}</option>
+                  <option key={idx} value={cat} className='stubborn-button'>{cat}</option>
                 ))}
               </select>
-              <button onClick={() => setIsAdding(true)}>➕ Add Item</button>
-              <button onClick={handleAddCategory}>📂 Add Category</button>
+              <button onClick={() => setIsAdding(true)} className='jj'>➕ Add Item</button>
+              <button onClick={handleAddCategory} className='jj'>📂 Add Category</button>
+              <button onClick={toggleTheme} className="theme-toggle-icon" title="Toggle Theme">
+                {theme === 'dark' ? <FaSun /> : <FaMoon />}
+              </button>
             </div>
           </div>
 
@@ -138,7 +142,7 @@ const Vault = () => {
             )}
           </div>
         </div>
-      </motion.div>
+      {/* </motion.div> */}
     </div>
   );
 };

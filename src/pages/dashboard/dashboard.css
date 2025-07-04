@@ -2,10 +2,10 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: white;
-  background-size: 400% 400%;
-  animation: bgParty 15s ease infinite;
-  color: black;
+  background: var(--bg);
+  /* background-size: 400% 400%; */
+  /* animation: bgParty 15s ease infinite; */
+  color: (var(--text));
 }
 
 /* Responsive wrapper */
@@ -27,6 +27,12 @@ body {
 .theme-toggle-icon:hover {
   transform: rotate(20deg);
   color: #fbbf24; /* Yellow-ish for fun */
+}
+
+.header
+{
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -144,6 +150,36 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 1rem;
+}
+
+.top-bar
+{
+  display: flex;
+  border-radius: 25pt;
+  /* gap: 10rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: fit-content; */
+  border-radius: 5pt;
+}
+
+.top-bar > input
+{
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 5pt 0pt 0pt 5pt;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-size: 1rem;
+  width: 35rem;
+}
+
+.top-bar > button
+{
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
+  width: 7rem;
+  border-radius: 0pt 5pt 5pt 0pt;
+  color: var(--text);
 }
 
 .entries {

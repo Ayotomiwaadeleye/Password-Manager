@@ -1,10 +1,10 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background: linear-gradient(to top right, #4b0082, #191970, #000);
-  background-size: 400% 400%;
-  animation: bgGradient 12s ease infinite;
-  color: white;
+  /* background: linear-gradient(to top right, #4b0082, #191970, #000); */
+  /* background-size: 400% 400%; */
+  /* animation: bgGradient 12s ease infinite; */
+  color: var(--text);
 }
 
 .edit-profile-btn {
@@ -14,6 +14,17 @@ body {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.profile-buttons
+{
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-wrapper > sidebar
+{
+  position: fixed;
 }
 
 .avatar-section {
@@ -59,7 +70,7 @@ body {
 }
 
 
-@keyframes bgGradient {
+/* @keyframes bgGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -76,7 +87,7 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .profile-container {
   padding: 3rem 1rem;
@@ -86,6 +97,8 @@ body {
 .profile-wrapper {
   max-width: 800px;
   margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-header {
@@ -93,11 +106,12 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  align-items: center;
 }
 
 .profile-title {
   font-size: 2.5rem;
-  background: linear-gradient(to right, yellow, pink, purple);
+  background: linear-gradient(to right, gray, pink, rgb(37, 37, 37));
   -webkit-background-clip: text;
   color: transparent;
 }

@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { useUser, SignedIn, SignedOut } from '@clerk/clerk-react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaSun, FaMoon } from 'react-icons/fa';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './profile.css';
 import { UserProfile } from '@clerk/clerk-react';
 import { ThemeContext } from '../../context/ThemeContext';
 
 const Profile = () => {
-  const { darkMode } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useUser();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -46,22 +46,28 @@ const Profile = () => {
         <div className="profile-wrapper">
           <div className="profile-header">
             <h1 className="profile-title">👤 My Profile</h1>
-            <SignedIn>
-              <button
-                onClick={() => window.location.href = '/sign-out'}
-                className="logout-btn"
-              >
-                🔓 Log Out
+            
+            <div className="profile-buttons">
+              <button onClick={toggleTheme} className="theme-toggle-icon" title="Toggle Theme">
+                {theme === 'dark' ? <FaSun /> : <FaMoon />}
               </button>
-            </SignedIn>
-            <SignedOut>
-              <button
-                onClick={() => window.location.href = '/sign-in'}
-                className="logout-btn"
-              >
-                🔐 Sign In
-              </button>
-            </SignedOut>
+              <SignedIn>
+                <button
+                  onClick={() => window.location.href = '/sign-out'}
+                  className="logout-btn"
+                >
+                  🔓 Log Out
+                </button>
+              </SignedIn>
+              <SignedOut>
+                <button
+                  onClick={() => window.location.href = '/sign-in'}
+                  className="logout-btn"
+                >
+                  🔐 Sign In
+                </button>
+              </SignedOut>
+            </div>
           </div>
 
           <div className="profile-card">

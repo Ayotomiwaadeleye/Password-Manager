@@ -3,7 +3,7 @@ import { UserProfile } from '@clerk/clerk-react';
 import Sidebar from '../../components/sidebar/Sidebar';
 import { FaBars, FaChevronRight, FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
 import './editProfile.css'; // Create this CSS file or reuse your global/dashboard CSS
 
@@ -46,12 +46,12 @@ const EditProfile = () => {
       <Toaster position="top-right" />
 
       {/* 📦 Main Content */}
-      <motion.div
+      {/* <motion.div
         className="dashboard-container"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-      >
+      > */}
         <div className="header-wrapper">
           {/* <button
             onClick={() => navigate('/settings')}
@@ -91,7 +91,7 @@ const EditProfile = () => {
             onError={handleError}
           />
         </div>
-      </motion.div>
+      {/* </motion.div> */}
     </div>
   );
 };

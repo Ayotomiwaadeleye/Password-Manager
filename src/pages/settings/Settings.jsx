@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserButton, useUser, useClerk, UserProfile } from '@clerk/clerk-react';
-import { motion } from 'framer-motion';
 import Sidebar from '../../components/sidebar/Sidebar';
 import { FaBars, FaUserEdit } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,7 +8,7 @@ import './settings.css';
 import { ThemeContext } from '../../context/ThemeContext';
 
 const Settings = () => {
-  const { darkMode, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useUser();
   const { signOut } = useClerk();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -66,12 +65,12 @@ const Settings = () => {
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar theme="dark" />
 
       {/* Main Content */}
-      <motion.div
+      {/* <motion.div
         className="settings-container fade-in"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-      >
+      > */}
         <div className="settings-wrapper {`settings-wrapper ${darkMode}`}">
           <div className="settings-header">
             <h1 className="settings-title">⚙️ Settings</h1>
@@ -125,7 +124,7 @@ const Settings = () => {
             </div>
           )}
         </div>
-      </motion.div>
+      {/* </motion.div> */}
     </div>
   );
 };

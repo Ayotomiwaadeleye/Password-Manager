@@ -2,18 +2,18 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to top right, #1e1e2e, #3c1f59, #6b0f71);
+  /* background: linear-gradient(to top right, #1e1e2e, #3c1f59, #6b0f71);
   background-size: 400% 400%;
-  animation: bgPulse 15s ease infinite;
-  color: white;
+  animation: bgPulse 15s ease infinite; */
+  color: var(--bg);
 }
 
 /* 🎞️ Background animation */
-@keyframes bgPulse {
+/* @keyframes bgPulse {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
+} */
 
 /* 🧾 Container */
 .settings-container {
@@ -39,7 +39,7 @@ body {
 /* 🌈 Title */
 .settings-title {
   font-size: 2.5rem;
-  background: linear-gradient(to right, #facc15, #ec4899, #8b5cf6);
+  background: linear-gradient(to right, gray, #4a3540, rgb(26, 24, 24));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);

@@ -2,10 +2,10 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(-45deg, #1e1b4b, #312e81, #4c1d95, #831843);
+  /* background: linear-gradient(-45deg, #1e1b4b, #312e81, #4c1d95, #831843);
   background-size: 400% 400%;
-  animation: vaultBG 15s ease infinite;
-  color: white;
+  animation: vaultBG 15s ease infinite; */
+  color: var(--bg);
 }
 
 /* --------------------- Layout & Sidebar Responsive --------------------- */
@@ -28,7 +28,54 @@ body {
   cursor: pointer;
 }
 
+.vault-wrapper
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.vault-header
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+}
+
+.vault-controls
+{
+  display: flex;
+  gap: 5px;
+  height: 3rem;
+  align-items: center;
+}
+
+.vault-controls > select
+{
+  height: 2rem;
+  width: 10rem;
+  color: var(--text);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.vault-controls > select > option
+{
+  display: flex;
+  color: var(--text);
+  background-color: var(--card-bg);
+}
+
+.vault-controls > .jj
+{
+  height: 2rem;
+  color: var(--text);
+  background-color: var(--card-bg);
+  border: none;
+}
+
 .vault-container {
+  display: flex;
+  justify-content: space-between;
   background-color: var(--bg);
   color: var(--text);
   padding: 2rem;
@@ -36,6 +83,11 @@ body {
   box-shadow: 0 4px 12px var(--shadow);
   border: 1px solid var(--border);
   transition: background 0.3s, color 0.3s;
+  padding: 2rem;
+  margin-left: 6rem;
+  transition: margin-left 0.3s ease;
+  /* flex: 1; */
+  width: fit-content;
 }
 
 @media (min-width: 768px) {
@@ -55,24 +107,17 @@ body {
 }
 
 
-.vault-container {
-  flex: 1;
-  padding: 2rem;
-  margin-left: 0;
-  transition: margin-left 0.3s ease;
-}
-
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .vault-container {
     margin-left: 260px;
   }
-}
+} */
 
 /* --------------------- Vault Content --------------------- */
-.vault-wrapper {
-  max-width: 1000px;
+/* .vault-wrapper {
+  max-width: 1000px; 
   margin: 0 auto;
-}
+} */
 
 .vault-header {
   display: flex;
